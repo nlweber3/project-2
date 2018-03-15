@@ -5,8 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script
+       src="https://code.jquery.com/jquery-3.3.1.js"
+       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+       crossorigin="anonymous">
+     </script>
+    </head>
 </head>
 <body>
-    
+    <form action="">
+        Origin: <br>
+            <input type="text" id="origin" name="origin"></br>
+        Destination: <br>
+            <input type="text" id="destination" name="destination"></br>
+        Departure Date: <br>
+            <input type="text" id="departure" name="departuredate"></br>
+        Return Date: <br>
+            <input type="text" id="return" name="returndate"></br>
+        Adults: <br>
+            <input type="text" id="adults" name="adults"></br>
+        Children: <br>
+            <input type="text" id="children" name="children"></br><br>
+    <button type="submit" id="submitbutton" value="Submit">Submit</button>
+    </form>
+    <div>
+        <h5 id="test">Your Itineraries: <h5>
+    </div>
+
+<script type="text/javascript">
+// Global vars
+    var apiKey = "&apikey=cG8ZbSEqyCqrad10YByFeF68h07TuCiw";
+    var userOrigin = "";
+    var userDestination = "";
+    var userDeparture = "";
+    var userReturn = "";
+    var userAdults = "";
+    var userChildren =  "";
+
+    $("#submitbutton").on("click",function(event) {
+    event.preventDefault();
+    userOrigin = $("#origin").val().trim();
+    userDestination = $("#destination").val().trim();
+    userDeparture = $("#departure").val().trim();
+    userReturn = $("#return").val().trim();
+    userAdults = $("#adults").val().trim();
+    userChildren = $("#children").val().trim();
+    $("#origin").val('');
+    $("#destination").val('');
+    $("#departure").val('');
+    $("#return").val('');
+    $("#adults").val('');
+    $("#children").val('');
+    getAirline();
+    });
+
+
+
+    function getAirline() {
+        var amadeusURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?origin="+ userOrigin + "&destination=" + userDestination + "&departure_date=" +userDeparture+ "&return_date=" + userReturn + "&adults=" + userAdults + "&children=" + userChildren + "&number_of_results=5" + apiKey;
+        $.ajax({
+            url: amadeusURL,
+            method: "GET",
+            dataType: "json"
+        }).done(function(response) {
+            console.log(response);
+            console.log(amadeusURL);
+        });
+    }
+</script>
+
+
 </body>
 </html>
