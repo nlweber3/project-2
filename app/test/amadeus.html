@@ -32,63 +32,48 @@
         <h5 id="test">Your Itineraries: <h5>
     </div>
 
-<script>
+    <script type="text/javascript">
 // Global vars
     var apiKey = "&apikey=cG8ZbSEqyCqrad10YByFeF68h07TuCiw";
-    var amadeusURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?origin="+ userOrigin + "&destination=" + userDestination + "&departure_date=" +userDeparture+ "&return_date=" + userReturn + "&adults=" + userAdults + "&children=" + userChildren + "&number_of_results=5" + apiKey;
-    var userOrigin;
-    var userDestination;
-    var userDeparture;
-    var userReturn;
-    var userAdults;
-    var userChildren;
-
-    $.ajax({
-        url: amadeusURL,
-        method: "GET"
-    }).done(function(response) {
-        console.log(response);
-    })
-
-
+    var userOrigin = "";
+    var userDestination = "";
+    var userDeparture = "";
+    var userReturn = "";
+    var userAdults = "";
+    var userChildren =  "";
 
     $("#submitbutton").on("click",function(event) {
     event.preventDefault();
-    userOrigin = $("#userOrigin").val().trim();
-    userDestination = $("#userDestination").val().trim();
-    userDeparture = $("#userDeparture").val().trim();
-    userReturn = $("#userReturn").val().trim();
-    userAdults = $("#userAdults").val().trim();
-    userChildren = $("#userChildren").val().trim();
+    userOrigin = $("#origin").val().trim();
+    userDestination = $("#destination").val().trim();
+    userDeparture = $("#departure").val().trim();
+    userReturn = $("#return").val().trim();
+    userAdults = $("#adults").val().trim();
+    userChildren = $("#children").val().trim();
     $("#origin").val('');
     $("#destination").val('');
     $("#departure").val('');
     $("#return").val('');
     $("#adults").val('');
     $("#children").val('');
-    // getAirline();
+    getAirline();
     });
 
 
 
-    // function getAirline() {
-    //     $.ajax({
-    //         url: amadeusURL,
-    //         method: "GET",
-    //         dataType: "json"
-    //     }).done(function(response) {
-    //         console.log(response);
-    //         console.log(amadeusURL);
-    //     });
-    // }
+    function getAirline() {
+        var amadeusURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?origin="+ userOrigin + "&destination=" + userDestination + "&departure_date=" +userDeparture+ "&return_date=" + userReturn + "&adults=" + userAdults + "&children=" + userChildren + "&number_of_results=5" + apiKey;
+        $.ajax({
+            url: amadeusURL,
+            method: "GET",
+            dataType: "json"
+        }).done(function(response) {
+            console.log(response);
+            console.log(amadeusURL);
+        });
+    }
 </script>
 
 
-</body>
-</html>
-
-</head>
-<body>
-    
 </body>
 </html>
