@@ -1,10 +1,8 @@
 // Dependencies
-
 var Sequelize = require('sequelize');
 var sequelize = require("../config/connection.js");
 
 // Model creation!
-
 var Itinerary = sequelize.define("itinerary", {
     origin: {
         type: Sequelize.STRING
