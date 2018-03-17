@@ -6,19 +6,28 @@ var exphbs = require("express-handlebars");
 
 var PORT = process.env.PORT || 3000;
 
+
 //  parsing into json
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
 // setting handlebars
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
+var routes = require("./")
+
+
+// app.get('/', function(request, response){
+//   response.render('index');
+// });
 
 // server listener
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+
+
 
   
