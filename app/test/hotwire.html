@@ -42,10 +42,12 @@
             dataType: "json",
           })
           .done(function(response) {
-              console.log(response.Result.HotelDeal.City);
-              for (var i = 0; i < response.Result.HotelDeal.length; i++){
-                  console.log(response.Result.HotelDeal[i]);
-              };
+              console.log(response);
+              $("#hotel-data").append(response.Result.HotelDeal.Headline + "<br>");
+              $("#hotel-data").append("Location neighborhood: " + response.Result.HotelDeal.Neighborhood + "<br>");
+              $("#hotel-data").append("Your savings percentage: " + response.Result.HotelDeal.SavingsPercentage + "%" + "<br>");
+              $("#hotel-data").append("Hotel star rating: " + response.Result.HotelDeal.StarRating + "<br>");
+
       });
     };
     
