@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-var routes = require("./")
-
+// var routes = require("./controller/ItineraryController.js")
+// app.use(routes);
 
 // app.get('/', function(request, response){
 //   response.render('index');
