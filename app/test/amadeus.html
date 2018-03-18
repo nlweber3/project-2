@@ -30,12 +30,10 @@
     </form>
     <div>
         <h5 id="test">Your Itineraries: <h5>
-            <div id="itinerary_container">
-
-            </div>
+        <div id="itinerary_container"></div>
     </div>
-
     <script type="text/javascript">
+
 // Global vars
     var apiKey = "&apikey=cG8ZbSEqyCqrad10YByFeF68h07TuCiw";
     var userOrigin = "";
@@ -59,9 +57,12 @@
     $("#return").val('');
     $("#adults").val('');
     $("#children").val('');
+    // calling function after getting user input
     getAirline();
     });
 
+
+// Function to connect ajax and get response from amadeus
     function getAirline() {
         var amadeusURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?origin="+ userOrigin + "&destination=" + userDestination + "&departure_date=" +userDeparture+ "&return_date=" + userReturn + "&adults=" + userAdults + "&children=" + userChildren + "&number_of_results=5" + apiKey;
         $.ajax({
@@ -72,7 +73,7 @@
             console.log(response.results);
             console.log(amadeusURL);
 
-            for (i=0;i<5;i++) {
+            for (i=0; i<3; i++) {
                 $("#itinerary_container").append( "Airline: " + response.results[i].itineraries[0].outbound.flights[0].marketing_airline + "<br>");
                 $("#itinerary_container").append( "Flight Number: " + response.results[i].itineraries[0].outbound.flights[0].flight_number + "<br>");
                 $("#itinerary_container").append("Your Total Price: $" + response.results[i].fare.total_price + "<br>");
@@ -84,11 +85,8 @@
                 $("#itinerary_container").append("Seats remaining: " + response.results[i].itineraries[0].outbound.flights[0].booking_info.seats_remaining + "<br>");
                 $("#itinerary_container").append( "Booking Class: " + response.results[0].itineraries[0].outbound.flights[0].booking_info.travel_class + "<br>" + "<hr>");
             }
-
-
-
         });
-    }
+    };
 </script>
 
 
