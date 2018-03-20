@@ -19,9 +19,6 @@ require('./config/passport.js')(passport);
 
 var PORT = process.env.PORT || 3000;
 
-//  parsing into json
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 // log every request to the console
 app.use(morgan('dev')); 
