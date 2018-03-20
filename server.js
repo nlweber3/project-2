@@ -3,27 +3,43 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 var exphbs = require("express-handlebars");
+<<<<<<< HEAD
 var html_routes = require('./app/routes/html-routes');
 var api_routes = require('./app/routes/api-routes');
 var path = require('path');
 var dbconfig = require('./config/database');
+=======
+// var html_routes = require('./app/routes/html-routes');
+var api_routes = require('./app/routes/api-routes');
+var path = require('path');
+var dbconfig = require('./app/config/database');
+>>>>>>> master
 var mysql = require('mysql');
 var connection = mysql.createConnection(dbconfig.connection);
 var express  = require('express');
 var session  = require('express-session');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var passport = require('passport');
 var flash    = require('connect-flash');
+<<<<<<< HEAD
 
 var PORT = process.env.PORT || 3000;
 
 require('dotenv').config();
 
 require('./config/passport.js')(passport); 
+=======
+>>>>>>> master
 
 
+<<<<<<< HEAD
+=======
+require('dotenv').config();
+
+require('./app/config/passport.js')(passport); 
+
+>>>>>>> master
 app.use(express.static('app/public'));
 //  parsing into json
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,6 +52,10 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/views'));
@@ -49,10 +69,13 @@ app.use(session({
   secret: 'session active',
   resave: true,
   saveUninitialized: true
-} )); // session secret
+} ));
+ // session secret
 app.use(passport.initialize());
+
 // persistent login sessions
 app.use(passport.session()); 
+
 // use connect-flash for flash messages stored in session
 app.use(flash()); 
 
@@ -60,17 +83,13 @@ app.use(flash());
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-html_routes(app);
-app.use('/api', api_routes);
+// html_routes(app);
+// app.use('/api', api_routes);
 
 //routes for passport
 require('./app/routes/passport-routes.js')(app, passport);
 
 // server listener
 app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
-
-
-
-  
+  console.log("App listening on PORT " + PORT);
+});
