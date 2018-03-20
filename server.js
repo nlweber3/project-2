@@ -3,19 +3,18 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 var exphbs = require("express-handlebars");
-var dbconfig = require('./config/database');
+var dbconfig = require('./app/config/database');
 var mysql = require('mysql');
 var connection = mysql.createConnection(dbconfig.connection);
 var express  = require('express');
 var session  = require('express-session');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var passport = require('passport');
 var flash    = require('connect-flash');
 require('dotenv').config();
 
-require('./config/passport.js')(passport); 
+require('./app/config/passport.js')(passport); 
 
 var PORT = process.env.PORT || 3000;
 
