@@ -15,9 +15,9 @@ app.use(bodyParser.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-require("./app/routes/api-routes.js")(app);
-require("./app/routes/html-routes.js")(app);
 
+require("./app/routes/api-routes.js")(app);
+// require("./app/routes/html-routes.js")(app);
 
 
 // server listener
