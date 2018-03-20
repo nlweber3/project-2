@@ -3,17 +3,9 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 var exphbs = require("express-handlebars");
-<<<<<<< HEAD
 var html_routes = require('./app/routes/html-routes');
-var api_routes = require('./app/roputes/api-routes');
+var api_routes = require('./app/routes/api-routes');
 var path = require('path');
-
-var PORT = process.env.PORT || 3000;
-
-app.use(express.static('app/public'));
-//  parsing into json
-app.use(bodyParser.urlencoded({ extended: true }));
-=======
 var dbconfig = require('./config/database');
 var mysql = require('mysql');
 var connection = mysql.createConnection(dbconfig.connection);
@@ -24,12 +16,17 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var passport = require('passport');
 var flash    = require('connect-flash');
+
+var PORT = process.env.PORT || 3000;
+
 require('dotenv').config();
 
 require('./config/passport.js')(passport); 
 
-var PORT = process.env.PORT || 3000;
 
+app.use(express.static('app/public'));
+//  parsing into json
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // log every request to the console
 app.use(morgan('dev')); 
@@ -39,7 +36,6 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
->>>>>>> origin
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/views'));
