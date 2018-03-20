@@ -52,8 +52,8 @@ app.use(flash());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-//routes
-require('./app/routes.js')(app, passport);
+//routes for passport
+require('./app/routes/passport-routes.js')(app, passport);
 
 // server listener
 app.listen(PORT, function() {
