@@ -45,17 +45,16 @@
     $("#search").on("click",function(event) {
     event.preventDefault();
 
-    var hotelObj = {
+    // var hotelObj = {
+    // search = $("#hotel-search").val().trim(),
+    // };
     search = $("#hotel-search").val().trim();
-    };
-
     getHotels();
-    $("hotel-search").val('');
 
-    $.post("/api/hotel", hotelObj)
-      .then(function(data) {
-        console.log(data);
-      });
+    // $.post("/api/hotel", hotelObj)
+    //   .then(function(data) {
+    //     console.log(data);
+    //   });
 });
 
     function getHotels() {
@@ -72,7 +71,24 @@
               $("#hotel-data").append("Location neighborhood: " + response.Result.HotelDeal.Neighborhood + "<br>");
               $("#hotel-data").append("Your savings percentage: " + response.Result.HotelDeal.SavingsPercentage + "%" + "<br>");
               $("#hotel-data").append("Hotel star rating: " + response.Result.HotelDeal.StarRating + "<br>");
+            
+             var hotelObj = {
+                 headline: response.Result.HotelDeal.Headline,
+                 neighborhood: response.Result.HotelDeal.Neighborhood,
+                 savingsPercentage: response.Result.HotelDeal.SavingsPercentage,
+                 starRating: response.Result.HotelDeal.StarRating 
+             };
+             console.log(hotelObj);
 
+             $.ajax("/api/hotels",{
+                 type:"POST",
+                 data:hotelObj
+             }).then(
+                 function() {
+                     console.log("hotel info created");
+                     location.reload();
+                 }
+             )
       });
     };
 
