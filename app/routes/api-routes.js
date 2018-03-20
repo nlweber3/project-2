@@ -23,10 +23,11 @@ module.exports = function(app) {
         console.log(req.body);
     });
 
-    router.post('/create',function(request, response) {
-        Itenerary.create(response, req.body);
     
-    });
 }
+router.post('/create',function(request, response) {
+    Itenerary.create(response, req.body);
+
+});
 
 module.exports = router; 
