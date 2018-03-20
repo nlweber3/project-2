@@ -2,6 +2,8 @@
 
 // Dependencies
 var connection = require("../config/connection.js");
+var router = require('express').Router();
+var Itenerary = require('../models/itinerary');
 
 // Routes
 module.exports = function(app) {
@@ -20,4 +22,12 @@ module.exports = function(app) {
         console.log("Itineraries Data: ");
         console.log(req.body);
     });
+
+    
 }
+router.post('/create',function(request, response) {
+    Itenerary.create(response, req.body);
+
+});
+
+module.exports = router; 
