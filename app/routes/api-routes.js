@@ -19,5 +19,5 @@ module.exports = function(app) {
     app.post("/itineraries/new", function(req, res) {
         console.log("Itineraries Data: ");
         console.log(req.body);
-    })
+    });
 }
