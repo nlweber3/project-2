@@ -19,19 +19,19 @@ var Itinerary = sequelize.define("itinerary", {
     price_child: {
         type: Sequelize.FLOAT
     },
-    departure_date_time {
+    departure_date_time: {
         type: Sequelize.DATEONLY
     },
-    origin {
+    origin: {
         type: Sequelize.STRING
     },
-    destination {
+    destination: {
         type: Sequelize.STRING
     },
-    seats_remaining {
-        type: INTEGER
+    seats_remaining: {
+        type: Sequelize.INTEGER
     },
-    booking_class {
+    booking_class: {
         type: Sequelize.STRING
     }
 });
