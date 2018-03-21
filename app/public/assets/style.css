@@ -2,6 +2,7 @@ body {
     background: linear-gradient(to left, #0099ff 0%, #00ffff 100%);
     
 
+ 
  }
  h1 {
         text-align: center;
@@ -10,7 +11,7 @@ body {
         font-size: 50px;
         padding-top: 50px;
         padding-bottom: 30px;
-        width: 750px;
+        width: 750px; 
         margin-left: 150px;
         color: black;
         font-family: arial;
