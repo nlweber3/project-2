@@ -41,32 +41,20 @@
     var endDate = '';
     var pickUpTime = '';
     var dropOffTime = '';
-
     $("#search").on("click",function(event) {
     event.preventDefault();
-
-    // var hotelObj = {
-    // search = $("#hotel-search").val().trim(),
-    // };
     search = $("#hotel-search").val().trim();
     getHotels();
-
-    // $.post("/api/hotel", hotelObj)
-    //   .then(function(data) {
-    //     console.log(data);
-    //   });
+    $("hotel-search").val('');
 });
-
     function getHotels() {
         var hotelURL = "http://api.hotwire.com/v1/deal/hotel?dest=" + search + "&apikey=ypwszhf8vexgvadxj7w4axkt&format=json" + "&limit=1";
-
         $.ajax({
             url:hotelURL,
             method: "GET",
             dataType: "json",
           })
           .done(function(response) {
-
               console.log(response);
               $("#hotel-data").append(response.Result.HotelDeal.Headline + "<br>");
               $("#hotel-data").append("Location neighborhood: " + response.Result.HotelDeal.Neighborhood + "<br>");
@@ -80,7 +68,6 @@
                  starRating: response.Result.HotelDeal.StarRating 
              };
              console.log(hotelObj);
-
              $.ajax("/api/hotels",{
                  type:"POST",
                  data:hotelObj
@@ -92,7 +79,6 @@
              )
       });
     };
-
     $("#car").on("click",function(event) {
         event.preventDefault();
         carSearch = $("#car-search").val().trim();
@@ -102,7 +88,6 @@
         dropOffTime = $("#dropoff-time").val().trim();
         getCars();
     });
-
     function getCars() {
         var carURL = "http://api.hotwire.com/v1/search/car?apikey=ypwszhf8vexgvadxj7w4axkt&dest=" + carSearch + "&startdate=" + startDate  +"&enddate=" + endDate + "&pickuptime=" + pickUpTime + "&dropofftime=" + dropOffTime + "&format=json";
         $.ajax({
@@ -112,11 +97,8 @@
           })
           .done(function(response) {
               console.log(response.Result.TotalPrice);
-
     })
 };
-
-
     </script>
 </body>
 

@@ -1,3 +1,7 @@
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "hotwire.html"));
-  });
+
+// module.exports = function(app){
+//     app.get('/',function (request,response){
+//         response.render('index');
+//     });
+// }
+
