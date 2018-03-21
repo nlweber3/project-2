@@ -35,15 +35,6 @@ module.exports = function(app,passport) {
 
     });
 
-// API ROUTES
-    app.get('/hotels', function(req, res) {
-        res.render('hotels.handlebars');
-    });
-    // Flights
-    app.get('/flights', function(req,res) {
-      res.render('amadeus.handlebars');
-    });
-
     app.get('/signup', function(req, res){
         res.render('signup.ejs',{message: req.flash('message')});
       });
@@ -74,7 +65,14 @@ module.exports = function(app,passport) {
         res.redirect('/');
     });
 
-
+    // API ROUTES
+      app.get('/hotels', function(req, res) {
+          res.render('hotels.handlebars');
+      });
+      // Flights
+      app.get('/flights', function(req,res) {
+        res.render('amadeus.handlebars');
+      });
 };
 
 function isLoggedIn(req,res,next){
