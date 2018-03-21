@@ -1,13 +1,13 @@
 var dbconfig = require('../config/database');
 var mysql = require('mysql');
-var connection = mysql.createConnection(dbconfig.connection); 
+var connection = mysql.createConnection(dbconfig.connection);
 var bcrypt = require('bcrypt-nodejs');
 
 
 
 module.exports = function(app,passport) {
 
-    
+
     app.get('/',isLoggedIn,function(req,res){
         var row = [];
         var row2=[];
@@ -16,16 +16,16 @@ module.exports = function(app,passport) {
                 console.log(err);
             } else {
                 if (rows.length) {
-                    for (var i = 0, len = rows.length; i < len; i++) { 
+                    for (var i = 0, len = rows.length; i < len; i++) {
                         row[i] = rows[i];
-                        
-                    }  
+
+                    }
                 }
                 console.log(row);
-                
+
             }
             console.log(row[0].password.length)
-            res.render('index.handlebars', {rows : row}); 
+            res.render('index.handlebars', {rows : row});
         });
     });
 
@@ -35,14 +35,14 @@ module.exports = function(app,passport) {
 
     });
 
-
+// API ROUTES
     app.get('/hotels', function(req, res) {
-
         res.render('hotels.handlebars');
-
     });
-
-
+    // Flights
+    app.get('/flights', function(req,res) {
+      res.render('amadeus.handlebars');
+    });
 
     app.get('/signup', function(req, res){
         res.render('signup.ejs',{message: req.flash('message')});
@@ -51,13 +51,13 @@ module.exports = function(app,passport) {
     app.post('/signup', passport.authenticate('local-signup', {
             successRedirect: '/login',
             failureRedirect: '/signup',
-            failureFlash : true 
+            failureFlash : true
     }));
 
     app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/', 
+            successRedirect : '/',
             failureRedirect : '/login',
-            failureFlash : true 
+            failureFlash : true
         }),
         function(req, res) {
             console.log("hello");
