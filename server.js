@@ -1,6 +1,6 @@
 // Require necessary files
 require('dotenv').config();
-require('./app/config/passport.js')(passport);
+
 
 // Dependencies
 var express = require("express");
@@ -13,7 +13,6 @@ var path = require('path');
 var dbconfig = require('./app/config/database');
 var mysql = require('mysql');
 var connection = mysql.createConnection(dbconfig.connection);
-var express = require('express');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
@@ -60,6 +59,10 @@ app.use(passport.session());
 // use connect-flash for flash messages stored in session
 app.use(flash());
 
+require('./app/routes/passport-routes.js')(app, passport);
+require('./app/config/passport.js')(passport);
+
+
 // setting handlebars
 app.engine('handlebars', exphbs({
   defaultLayout: 'main'
@@ -70,9 +73,9 @@ app.set('view engine', 'handlebars');
 // app.use('/api', api_routes);
 
 //routes for passport
-require('./app/routes/passport-routes.js')(app, passport);
+// require('./app/routes/passport-routes.js')(app, passport);
 
-require("./app/routes/api-routes.js")(app);
+// require("./app/routes/api-routes.js")(app);
 // require("./app/routes/html-routes.js")(app);
 
 
