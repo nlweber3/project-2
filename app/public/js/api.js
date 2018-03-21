@@ -1,52 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.js"
-    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>
-</head>
-<body>
-    <form>
-        <input type="text" id="hotel-search"> Hotel location
-        <button type="button" id="search">Search!</button>
-<div id="rentals">
-        <input type="text" id="car-search">Car Location
-        <button type="button" id="car">Search!</button>
-        <input type="text" id="start-date">Start date
-        <input type="text" id="end-date">End Date
-        <input type="text" id="pickup-time">Pickup Time
-        <input type="text" id="dropoff-time">Dropoff Time
-
-        
-
-
-        </div>
-    </form>
-
-    <div id="hotel-data">
-
-    </div>
-
-
-
-    <script type="text/javascript">
     var search = '';
     var carSearch = '';
     var startDate = '';
     var endDate = '';
     var pickUpTime = '';
     var dropOffTime = '';
+
+
+    
     $("#search").on("click",function(event) {
     event.preventDefault();
     search = $("#hotel-search").val().trim();
     getHotels();
     $("hotel-search").val('');
 });
+
     function getHotels() {
         var hotelURL = "http://api.hotwire.com/v1/deal/hotel?dest=" + search + "&apikey=ypwszhf8vexgvadxj7w4axkt&format=json" + "&limit=1";
         $.ajax({
@@ -72,13 +39,16 @@
                  type:"POST",
                  data:hotelObj
              }).then(
-                 function() {
+                 function(data) {
+                     console.log(data)
                      console.log("hotel info created");
                      location.reload();
                  }
              )
       });
     };
+
+
     $("#car").on("click",function(event) {
         event.preventDefault();
         carSearch = $("#car-search").val().trim();
@@ -88,6 +58,8 @@
         dropOffTime = $("#dropoff-time").val().trim();
         getCars();
     });
+
+
     function getCars() {
         var carURL = "http://api.hotwire.com/v1/search/car?apikey=ypwszhf8vexgvadxj7w4axkt&dest=" + carSearch + "&startdate=" + startDate  +"&enddate=" + endDate + "&pickuptime=" + pickUpTime + "&dropofftime=" + dropOffTime + "&format=json";
         $.ajax({
@@ -99,7 +71,3 @@
               console.log(response.Result.TotalPrice);
     })
 };
-    </script>
-</body>
-
-</html>

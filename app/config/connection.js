@@ -2,7 +2,7 @@
 var Sequelize = require("sequelize");
 
 // Create sql connection
-var sequelize = new Sequelize("itinerary_db", "root", process.env.PASSWORD, {
+var sequelize = new Sequelize("db", "root", process.env.PASSWORD, {
     host: "localhost",
     dialect: "mysql",
     pool: {

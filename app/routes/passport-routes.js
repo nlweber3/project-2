@@ -35,6 +35,15 @@ module.exports = function(app,passport) {
 
     });
 
+
+    app.get('/hotels', function(req, res) {
+
+        res.render('hotels.handlebars');
+
+    });
+
+
+
     app.get('/signup', function(req, res){
         res.render('signup.ejs',{message: req.flash('message')});
       });
