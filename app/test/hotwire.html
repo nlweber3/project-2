@@ -44,17 +44,9 @@
 
     $("#search").on("click",function(event) {
     event.preventDefault();
-
-    // var hotelObj = {
-    // search = $("#hotel-search").val().trim(),
-    // };
     search = $("#hotel-search").val().trim();
     getHotels();
-
-    // $.post("/api/hotel", hotelObj)
-    //   .then(function(data) {
-    //     console.log(data);
-    //   });
+    $("hotel-search").val('');
 });
 
     function getHotels() {

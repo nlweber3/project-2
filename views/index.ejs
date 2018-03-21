@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keyword" content="HTML, CSS, JAVASCRIPT">
+	<title>USER LOGIN</title>
+	<link rel="stylesheet" href="/assets/style.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title></title>
+</head>
+<body class="background-gradient"><br><br><br>
+	<div class="container">
+		<div class="">
+
+				$('userOrigin').append('<%- include row.html %>')
+			<!-- 'Scriptlet' tag, for control-flow, no output !-->
+			<% rows.forEach(function(rows) { %>
+
+
+				<!-- Outputs the value into the template !-->
+				<h2>name :<%=rows.username%>  </h2><br>
+				<h2>pass : <%=rows.password%> </h2> 
+		 	<% }); %>
+		</div>
+	</div>
+</body>
+</html>
