@@ -6,7 +6,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 var exphbs = require("express-handlebars");
-// var html_routes = require('./app/routes/html-routes');
+var html_routes = require('./app/routes/html-routes');
 var api_routes = require('./app/routes/api-routes');
 var path = require('path');
 var dbconfig = require('./app/config/database');
@@ -74,7 +74,6 @@ app.set('view engine', 'handlebars');
 //routes for passport
 // require('./app/routes/passport-routes.js')(app, passport);
 
-// require("./app/routes/api-routes.js")(app);
 // require("./app/routes/html-routes.js")(app);
 
 

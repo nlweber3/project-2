@@ -23,7 +23,9 @@ module.exports = function(app) {
         console.log(req.body);
     });
 
-    
+    app.post("/api/hotels", function(req, res) {
+        console.log(req.body);
+      });
 }
 router.post('/create',function(request, response) {
     Itenerary.create(response, req.body);

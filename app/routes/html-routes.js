@@ -1,7 +1,9 @@
-
 // module.exports = function(app){
-//     app.get('/',function (request,response){
-//         response.render('index');
+//     app.get('/hotels',function (request,response){
+//         response.render('hotels.handlebars');
+//         if(error){
+//             console.log(error);
+//         }
 //     });
 // }
 
