@@ -29,7 +29,7 @@ var Itinerary = sequelize.define("itinerary", {
         type: Sequelize.STRING
     },
     seats_remaining: {
-        type: INTEGER
+        type: Sequelize.INTEGER
     },
     booking_class: {
         type: Sequelize.STRING
