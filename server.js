@@ -69,7 +69,7 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-// html_routes(app);
+html_routes(app);
 // app.use('/api', api_routes);
 
 //routes for passport

@@ -7,5 +7,4 @@ module.exports = function(app) {
   app.get('/flights', function(req,res) {
     res.render('amadeus.handlebars');
   });
-
 };
