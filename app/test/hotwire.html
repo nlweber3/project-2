@@ -12,8 +12,20 @@
 </head>
 <body>
     <form>
-        <input type="text" id="hotel-search">
+        <input type="text" id="hotel-search"> Hotel location
         <button type="button" id="search">Search!</button>
+<div id="rentals">
+        <input type="text" id="car-search">Car Location
+        <button type="button" id="car">Search!</button>
+        <input type="text" id="start-date">Start date
+        <input type="text" id="end-date">End Date
+        <input type="text" id="pickup-time">Pickup Time
+        <input type="text" id="dropoff-time">Dropoff Time
+
+        
+
+
+        </div>
     </form>
 
     <div id="hotel-data">
@@ -24,26 +36,17 @@
 
     <script type="text/javascript">
     var search = '';
+    var carSearch = '';
+    var startDate = '';
+    var endDate = '';
+    var pickUpTime = '';
+    var dropOffTime = '';
 
     $("#search").on("click",function(event) {
     event.preventDefault();
-
-<<<<<<< Updated upstream
     search = $("#hotel-search").val().trim();
     getHotels();
     $("hotel-search").val('');
-=======
-    // var hotelObj = {
-    // search = $("#hotel-search").val().trim(),
-    // };
-    search = $("#hotel-search").val().trim();
-    getHotels();
-
-    // $.post("/api/hotel", hotelObj)
-    //   .then(function(data) {
-    //     console.log(data);
-    //   });
->>>>>>> Stashed changes
 });
 
     function getHotels() {
@@ -55,12 +58,6 @@
             dataType: "json",
           })
           .done(function(response) {
-<<<<<<< Updated upstream
-              console.log(response.Result.HotelDeal.City);
-              for (var i = 0; i < response.Result.HotelDeal.length; i++){
-                  console.log(response.Result.HotelDeal[i]);
-              };
-=======
               console.log(response);
               $("#hotel-data").append(response.Result.HotelDeal.Headline + "<br>");
               $("#hotel-data").append("Location neighborhood: " + response.Result.HotelDeal.Neighborhood + "<br>");
@@ -84,9 +81,31 @@
                      location.reload();
                  }
              )
->>>>>>> Stashed changes
       });
     };
+
+    $("#car").on("click",function(event) {
+        event.preventDefault();
+        carSearch = $("#car-search").val().trim();
+        startDate= $("#start-date").val().trim();
+        endDate = $("#end-date").val().trim();
+        pickUpTime = $("#pickup-time").val().trim();
+        dropOffTime = $("#dropoff-time").val().trim();
+        getCars();
+    });
+
+    function getCars() {
+        var carURL = "http://api.hotwire.com/v1/search/car?apikey=ypwszhf8vexgvadxj7w4axkt&dest=" + carSearch + "&startdate=" + startDate  +"&enddate=" + endDate + "&pickuptime=" + pickUpTime + "&dropofftime=" + dropOffTime + "&format=json";
+        $.ajax({
+            url:carURL,
+            method: "GET",
+            dataType: "json",
+          })
+          .done(function(response) {
+              console.log(response.Result.TotalPrice);
+
+    })
+};
 
 
     </script>

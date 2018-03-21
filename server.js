@@ -68,6 +68,10 @@ app.set('view engine', 'handlebars');
 //routes for passport
 require('./app/routes/passport-routes.js')(app, passport);
 
+require("./app/routes/api-routes.js")(app);
+// require("./app/routes/html-routes.js")(app);
+
+
 // server listener
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
