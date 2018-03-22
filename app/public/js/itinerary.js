@@ -23,7 +23,7 @@ var dropOffTime = '';
     userAdults = $("#adults").val().trim();
     userChildren = $("#children").val().trim();
     // hotels
-    hotelSearch = $("#hotel-search").val().trim();
+    // hotelSearch = $("#hotel-search").val().trim();
     // vehicle
     // carSearch = $("#car-search").val().trim();
     // startDate= $("#start-date").val().trim();
@@ -87,23 +87,47 @@ function getAirline() {
     });
 };
 
+// function getHotels() {
+//     var hotelURL = "http://api.hotwire.com/v1/deal/hotel?dest=" + hotelSearch + "&apikey=ypwszhf8vexgvadxj7w4axkt&format=json" + "&limit=3";
+//     $.ajax({
+//         url:hotelURL,
+//         method: "GET",
+//         dataType: "json",
+//       })
+//       .done(function(response) {
+//           console.log(response);
+//           hotelData = response;
+//           for (i=0; i<3; i++) {
+//               $("#hotel-data").append("Hotel Name: " + response.Result[i].Headline + "<br>");
+//               $("#hotel-data").append("Location: " + response.Result[i].Neighborhood + "<br>");
+//               $("#hotel-data").append("Price: $" + response.Result[i].Price + "<br>");
+//               $("#hotel-data").append("Rating: " + response.Result[i].StarRating + "<br>" +"<div>" + createRadioButtons('hotels', i) + "</div>");
+//       };
+//   });
+// };
+
+
 function getHotels() {
-    var hotelURL = "http://api.hotwire.com/v1/deal/hotel?dest=" + hotelSearch + "&apikey=ypwszhf8vexgvadxj7w4axkt&format=json" + "&limit=3";
+    var hotelURL = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?" + "apikey=cG8ZbSEqyCqrad10YByFeF68h07TuCiw" + "&location=" + userDestination + "&check_in=" + userDeparture + "&check_out=" + userReturn + "&number_of_results=3";
     $.ajax({
-        url:hotelURL,
-        method: "GET",
-        dataType: "json",
-      })
-      .done(function(response) {
-          console.log(response);
-          hotelData = response;
-          for (i=0; i<3; i++) {
-              $("#hotel-data").append("Hotel Name: " + response.Result[i].Headline + "<br>");
-              $("#hotel-data").append("Location: " + response.Result[i].Neighborhood + "<br>");
-              $("#hotel-data").append("Price: $" + response.Result[i].Price + "<br>");
-              $("#hotel-data").append("Rating: " + response.Result[i].StarRating + "<br>" +"<div>" + createRadioButtons('hotels', i) + "</div>");
-      };
-  });
+        url: hotelURL,
+        method:"GET",
+        dataType: "json"
+    }).done(function(response) {
+        console.log(response);
+        console.log(hotelURL);
+
+        for (var j = 0; j < 3 ; j++) { 
+            $("#hotel-data").append("City: " + response.results[j].address.line1);
+            $("#hotel-data").append("City: " + response.results[j].address.city);
+            $("#hotel-data").append("City: " + response.results[j].address.region);
+            $("#hotel-data").append("City: " + response.results[j].address.postal_code);
+            $("#hotel-data").append("City: " + response.results[j].address.country);
+            $("#hotel-data").append("City: " + response.results[j].contacts[0].detail);
+            
+
+        }
+});
 };
 
 function createRadioButtons(typeName, idx){
