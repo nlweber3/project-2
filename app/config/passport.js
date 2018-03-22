@@ -62,18 +62,21 @@ module.exports = function(passport) {
     passport.use(
         'local-login',
         new LocalStrategy({
-            
             usernameField : 'username',
             passwordField : 'password',
             passReqToCallback : true 
         },
         function(req, username, password, done) { 
+
             connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
                 if (err)
                     return done(err);
+
+        
                 if (!rows.length) {
                     return done(null, false, req.flash('loginMessage', 'Cannot Find Username')); 
                 }
+                
 
            
                 if (!bcrypt.compareSync(password, rows[0].password))
@@ -81,6 +84,10 @@ module.exports = function(passport) {
 
           
                 return done(null, rows[0]);
+
+                
+
+
             });
         })
     );
