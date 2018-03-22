@@ -1,9 +1,9 @@
 body {
     background: linear-gradient(to left, #0099ff 0%, #00ffff 100%);
-    
 
- 
- }  
+
+
+ }
  .login-h1 {
 
     text-align: center;
@@ -11,25 +11,40 @@ body {
     padding:10px;
     margin-bottom: 30px;
     border: solid black 2px;
-    
+
  }
- /* a {	
-     text-align: center;	
-     background: whitesmoke;	
+ /* a {
+     text-align: center;
+     background: whitesmoke;
 }	 */
-nav  {	
-    text-align: center;	
-    margin-left: 500px;	
-    margin-right: 500px;	
+nav  {
+    text-align: center;
+    margin-left: 500px;
+    margin-right: 500px;
     background-color: whitesmoke;
 }
  #bottom-form {
      margin-bottom: 30px;
  }
- 
+
  h2 {
     text-align: center;
  }
  .red-hyper {
      color: #DC143C;
  }
+
+ #itinerary_container {
+  float: left;
+   border-style: solid;
+ }
+
+ #itinerary_returning {
+
+   border-style: solid;
+ }
+
+#hotel-data {
+   border-style: solid;
+   padding-top: 2%;
+}
