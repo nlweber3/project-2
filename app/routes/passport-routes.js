@@ -30,8 +30,11 @@ module.exports = function(app,passport) {
     });
 
     app.get('/login', function(req, res) {
+        var flashMessages = req.flash(),
+            errors = flashMessages.error || [];
 
-        res.render('login.ejs',{ message: req.flash('loginMessage') });
+
+        res.render('login.ejs',{ message: errors });
 
     });
 
@@ -51,7 +54,7 @@ module.exports = function(app,passport) {
             failureFlash : true
         }),
         function(req, res) {
-            console.log("hello");
+            console.log("test");
 
             if (req.body.remember) {
               req.session.cookie.maxAge = 1000 * 60 * 3;

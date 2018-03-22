@@ -7,9 +7,18 @@ body {
  h1 {
     text-align: center;
     background: whitesmoke;
+    padding:10px;
+    margin-bottom: 30px;
+    border: solid black 2px;
     
+ }
+ #bottom-form {
+     margin-bottom: 30px;
  }
  
  h2 {
     text-align: center;
+ }
+ .red-hyper {
+     color: #DC143C;
  }
