@@ -114,20 +114,20 @@ function getHotels() {
         method:"GET",
         dataType: "json"
     }).done(function(response) {
+        hotelData = response.results;
         console.log(response);
         console.log(hotelURL);
 
-        for (var j = 0; j < 3 ; j++) { 
-            $("#hotel-data").append("City: " + response.results[j].address.line1);
-            $("#hotel-data").append("City: " + response.results[j].address.city);
-            $("#hotel-data").append("City: " + response.results[j].address.region);
-            $("#hotel-data").append("City: " + response.results[j].address.postal_code);
-            $("#hotel-data").append("City: " + response.results[j].address.country);
-            $("#hotel-data").append("City: " + response.results[j].contacts[0].detail);
-            
 
-        }
-});
+        for (var j = 0; j < 3 ; j++) {
+            $("#hotel-data").append("Address: " + response.results[j].address.line1 + "<br>");
+            $("#hotel-data").append(" " + response.results[j].address.city);
+            $("#hotel-data").append(", " + response.results[j].address.region );
+            $("#hotel-data").append(" " + response.results[j].address.postal_code);
+            $("#hotel-data").append(" " + response.results[j].address.country + "<br>");
+            $("#hotel-data").append("Phone Number: " + response.results[j].contacts[0].detail + "<br>" + "<div>" + createRadioButtons('hotels', j) +"</div>");
+        };
+  });
 };
 
 function createRadioButtons(typeName, idx){
