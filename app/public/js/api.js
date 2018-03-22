@@ -5,7 +5,21 @@
     var pickUpTime = '';
     var dropOffTime = '';
 
-
+    function censor(censor) {
+        var i = 0;
+      
+        return function(key, value) {
+          if(i !== 0 && typeof(censor) === 'object' && typeof(value) == 'object' && censor == value) 
+            return '[Circular]'; 
+      
+          if(i >= 29) // seems to be a harded maximum of 30 serialized objects?
+            return '[Unknown]';
+      
+          ++i; // so we know we aren't using the original object anymore
+      
+          return value;  
+        }
+      };
     
     $("#search").on("click",function(event) {
     event.preventDefault();
@@ -28,23 +42,19 @@
               $("#hotel-data").append("Your savings percentage: " + response.Result.HotelDeal.SavingsPercentage + "%" + "<br>");
               $("#hotel-data").append("Hotel star rating: " + response.Result.HotelDeal.StarRating + "<br>");
             
-             var hotelObj = {
-                 headline: response.Result.HotelDeal.Headline,
-                 neighborhood: response.Result.HotelDeal.Neighborhood,
-                 savingsPercentage: response.Result.HotelDeal.SavingsPercentage,
-                 starRating: response.Result.HotelDeal.StarRating 
-             };
+             var hotelObj = response.Result.HotelDeal.Headline;
+           
              console.log(hotelObj);
              $.ajax("/api/hotels",{
                  type:"POST",
-                 data:hotelObj
+                 data:censor(hotelObj),
              }).then(
                  function(data) {
-                     console.log(data)
+                     console.log(data);
                      console.log("hotel info created");
                      location.reload();
                  }
-             )
+             );
       });
     };
 
