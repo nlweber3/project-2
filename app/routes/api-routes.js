@@ -2,13 +2,13 @@
 
 // Dependencies
 var connection = require("../config/connection.js");
-var router = require('express').Router();
+// var router = Router();
 var Itenerary = require('../models/itinerary');
 
 // Routes
 module.exports = function(app) {
     //Get all itineraries.
-    app.get("/itineraries/all", function(app) {
+    app.get("/itineraries/all", function(req,res) {
         var dbQuery = "SELECT * FROM itinerary";
 
         connection.query(dbQuery, function(err, result) {
@@ -23,15 +23,18 @@ module.exports = function(app) {
         console.log(req.body);
     });
 
+    app.get("/api/hotels",function(req,res) {
+        console.log(res);
+    });
 
     app.post("/api/hotels", function(req, res) {
         console.log(req.body);
     });
 };
 
-router.post('/create',function(request, response) {
-    Itenerary.create(response, req.body);
+// router.post('/create',function(request, response) {
+//     Itenerary.create(response, req.body);
 
-});
+// });
 
-module.exports = router; 
+// module.exports = router; 

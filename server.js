@@ -7,8 +7,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 var exphbs = require("express-handlebars");
-var html_routes = require('./app/routes/html-routes');
-var api_routes = require('./app/routes/api-routes');
+var html_routes = require('./app/routes/html-routes')(app);
+var api_routes = require('./app/routes/api-routes')(app);
 var path = require('path');
 var dbconfig = require('./app/config/database');
 var mysql = require('mysql');
@@ -68,15 +68,6 @@ app.engine('handlebars', exphbs({
   defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
-
-html_routes(app);
-// app.use('/api', api_routes);
-
-//routes for passport
-// require('./app/routes/passport-routes.js')(app, passport);
-
-// require("./app/routes/html-routes.js")(app);
-
 
 // server listener
 app.listen(PORT, function() {
