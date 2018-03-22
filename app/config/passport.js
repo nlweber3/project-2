@@ -35,7 +35,8 @@ module.exports = function(passport) {
                 if (err)
                     return done(err);
                 if (rows.length) {
-                    return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
+                    return done(null, false, req.flash('error', 'That Username is Already Taken'));
+                    console.log('taken')
                 } else {
 
                     var newUserMysql = {
@@ -62,25 +63,31 @@ module.exports = function(passport) {
     passport.use(
         'local-login',
         new LocalStrategy({
-            
             usernameField : 'username',
             passwordField : 'password',
             passReqToCallback : true 
         },
         function(req, username, password, done) { 
+
             connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
                 if (err)
                     return done(err);
+
+        
                 if (!rows.length) {
-                    return done(null, false, req.flash('loginMessage', 'Cannot Find Username')); 
+                    return done(null, false, req.flash('error', 'Cannot Find Username')); 
                 }
+                
 
-           
+
                 if (!bcrypt.compareSync(password, rows[0].password))
-                    return done(null, false, req.flash('loginMessage', 'Wrong Password'));
+                    return done(null, false, req.flash('error', 'Wrong Password'));
 
-          
                 return done(null, rows[0]);
+
+                
+
+
             });
         })
     );

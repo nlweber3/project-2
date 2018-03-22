@@ -21,6 +21,10 @@ var flash = require('connect-flash');
 
 var PORT = process.env.PORT || 3000;
 
+require('dotenv').config();
+
+require('./app/config/passport.js')(passport); 
+
 app.use(express.static('app/public'));
 //  parsing into json
 app.use(bodyParser.urlencoded({

@@ -1,0 +1,22 @@
+<h2>Create Itinerary</h2>
+
+{{#each }} 
+<div class = "">
+<p>
+    Origin: {{origin}}
+</p>
+<p>
+    Destination: {{destination}}
+</p>
+<p>
+    Departure Date: {{departure_date_time}}
+</p>
+</div>
+{{/each}}
+
+<form action="newIt" method="post">
+    <input type="text" placeholder="" name="origin">
+    <input type="text" placeholder="" name="destination">
+    <input type="text" placeholder="" name="departure">
+    <button>Sumbit</button>
+</form>
