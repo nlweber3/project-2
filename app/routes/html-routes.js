@@ -9,7 +9,7 @@ module.exports = function(app) {
       res.render('hotels.handlebars');
   });
   // Flights
-  app.get('/create/itineraries', function(req,res) {
+  app.get('/flights', function(req,res) {
     res.render('amadeus.handlebars');
   });
 };
