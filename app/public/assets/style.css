@@ -5,25 +5,13 @@ body {
  
  }
  h1 {
-<<<<<<< HEAD
-        text-align: center;
-        background: whitesmoke;
-        margin-top: 50px;
-        font-size: 50px;
-        padding-top: 50px;
-        padding-bottom: 30px;
-        width: 750px; 
-        margin-left: 150px;
-        color: black;
-        font-family: arial;
-=======
+
     text-align: center;
     background: whitesmoke;
     padding:10px;
     margin-bottom: 30px;
     border: solid black 2px;
     
->>>>>>> 3a7b3ee64cc0058220060c9f12dce276104bce76
  }
  #bottom-form {
      margin-bottom: 30px;
@@ -31,30 +19,7 @@ body {
  
  h2 {
     text-align: center;
-<<<<<<< HEAD
-    background-color: whitesmoke; 
-    margin-left: 150px;
-    width: 750px;
- } 
-
- a {
-     text-align: center;
-     
-     background: whitesmoke;
- }
-
-  nav  {
-     text-align: center;
-     margin-left: 500px;
-     margin-right: 500px;
-     background-color: whitesmoke;
-  }
-     
-
- 
-=======
  }
  .red-hyper {
      color: #DC143C;
  }
->>>>>>> 3a7b3ee64cc0058220060c9f12dce276104bce76
