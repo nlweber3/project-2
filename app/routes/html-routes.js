@@ -10,6 +10,6 @@ module.exports = function(app) {
   });
   // Flights
   app.get('/flights', function(req,res) {
-    res.render('amadeus.handlebars');
+    res.render('itinerary.handlebars');
   });
 };
