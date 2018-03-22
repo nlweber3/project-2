@@ -66,8 +66,6 @@ app.use(flash());
 require('./app/routes/passport-routes.js')(app, passport);
 require('./app/config/passport.js')(passport);
 
-html_routes(app);
-app.use('/api', api_routes);
 
 // setting handlebars
 app.engine('handlebars', exphbs({
