@@ -31,10 +31,11 @@ module.exports = function(app,passport) {
 
     app.get('/login', function(req, res) {
         var flashMessages = req.flash(),
-            errors = flashMessages.error || [];
+            error = flashMessages.error || [];
 
 
-        res.render('login.ejs',{ message: errors });
+
+        res.render('login.ejs',{ message: error });
 
     });
 

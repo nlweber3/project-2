@@ -74,15 +74,14 @@ module.exports = function(passport) {
 
         
                 if (!rows.length) {
-                    return done(null, false, req.flash('loginMessage', 'Cannot Find Username')); 
+                    return done(null, false, req.flash('error', 'Cannot Find Username')); 
                 }
                 
 
-           
-                if (!bcrypt.compareSync(password, rows[0].password))
-                    return done(null, false, req.flash('loginMessage', 'Wrong Password'));
 
-          
+                if (!bcrypt.compareSync(password, rows[0].password))
+                    return done(null, false, req.flash('error', 'Wrong Password'));
+
                 return done(null, rows[0]);
 
                 
