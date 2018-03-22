@@ -1,4 +1,3 @@
-
 CREATE DATABASE db;
 
 USE db;
