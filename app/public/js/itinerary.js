@@ -60,18 +60,17 @@ function getAirline() {
         console.log(amadeusURL);
         // Outbound
         for (i=0; i<3; i++) {
-            var temp = $('<div>');
-            temp.append( "<div class='airline'>Airline: " + response.results[i].itineraries[0].outbound.flights[0].marketing_airline + "</div><br>");
-            temp.append( "Flight Number: " + response.results[i].itineraries[0].outbound.flights[0].flight_number + "<br>");
-            temp.append("Your Total Price: $" + response.results[i].fare.total_price + "<br>");
-            temp.append(" -price per adult: $" + response.results[i].fare.price_per_adult.total_fare + "+ Tax: $" + response.results[0].fare.price_per_adult.tax +"<br>");
-            temp.append(" -price per child: $" + response.results[i].fare.price_per_child.total_fare + "+ Tax: $" + response.results[0].fare.price_per_child.tax + "<br>");
-            temp.append("Departure Date/Time: " + response.results[i].itineraries[0].outbound.flights[0].departs_at + "<br>");
-            temp.append("Origin: " + response.results[i].itineraries[0].outbound.flights[0].origin.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].origin.terminal + "<br>");
-            temp.append("Destination: " + response.results[i].itineraries[0].outbound.flights[0].destination.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].destination.terminal + "<br>");
-            temp.append("Seats remaining: " + response.results[i].itineraries[0].outbound.flights[0].booking_info.seats_remaining + "<br>");
-            temp.append( "Booking Class: " + response.results[0].itineraries[0].outbound.flights[0].booking_info.travel_class + "<br>" +"<div>" + createRadioButtons('outbound', i) +"</div>" +"<hr>");
-            $('#itinerary_container').append(temp);
+            $('#itinerary_container').append("Airline: " + response.results[i].itineraries[0].outbound.flights[0].marketing_airline + "</div><br>");
+            $('#itinerary_container').append( "Flight Number: " + response.results[i].itineraries[0].outbound.flights[0].flight_number + "<br>");
+            $('#itinerary_container').append("Your Total Price: $" + response.results[i].fare.total_price + "<br>");
+            $('#itinerary_container').append(" -price per adult: $" + response.results[i].fare.price_per_adult.total_fare + "+ Tax: $" + response.results[0].fare.price_per_adult.tax +"<br>");
+            $('#itinerary_container').append(" -price per child: $" + response.results[i].fare.price_per_child.total_fare + "+ Tax: $" + response.results[0].fare.price_per_child.tax + "<br>");
+            $('#itinerary_container').append("Departure Date/Time: " + response.results[i].itineraries[0].outbound.flights[0].departs_at + "<br>");
+            $('#itinerary_container').append("Origin: " + response.results[i].itineraries[0].outbound.flights[0].origin.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].origin.terminal + "<br>");
+            $('#itinerary_container').append("Destination: " + response.results[i].itineraries[0].outbound.flights[0].destination.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].destination.terminal + "<br>");
+            $('#itinerary_container').append("Seats remaining: " + response.results[i].itineraries[0].outbound.flights[0].booking_info.seats_remaining + "<br>");
+            $('#itinerary_container').append( "Booking Class: " + response.results[0].itineraries[0].outbound.flights[0].booking_info.travel_class + "<br>" +"<div>" + createRadioButtons('outbound', i) +"</div>");
+
 
             // Inbound
             $("#itinerary_returning").append( "Airline: " + response.results[i].itineraries[0].inbound.flights[0].marketing_airline + "<br>");
@@ -83,7 +82,7 @@ function getAirline() {
             $("#itinerary_returning").append("Origin: " + response.results[i].itineraries[0].inbound.flights[0].origin.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].origin.terminal + "<br>");
             $("#itinerary_returning").append("Destination: " + response.results[i].itineraries[0].inbound.flights[0].destination.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].destination.terminal + "<br>");
             $("#itinerary_returning").append("Seats remaining: " + response.results[i].itineraries[0].inbound.flights[0].booking_info.seats_remaining + "<br>");
-            $("#itinerary_returning").append( "Booking Class: " + response.results[0].itineraries[0].inbound.flights[0].booking_info.travel_class + "<br>" +"<div>" + createRadioButtons('inbound', i) + "</div>" +"<hr>");
+            $("#itinerary_returning").append( "Booking Class: " + response.results[0].itineraries[0].inbound.flights[0].booking_info.travel_class + "<br>" +"<div>" + createRadioButtons('inbound', i) + "</div>");
         }
     });
 };
@@ -102,7 +101,7 @@ function getHotels() {
               $("#hotel-data").append("Hotel Name: " + response.Result[i].Headline + "<br>");
               $("#hotel-data").append("Location: " + response.Result[i].Neighborhood + "<br>");
               $("#hotel-data").append("Price: $" + response.Result[i].Price + "<br>");
-              $("#hotel-data").append("Rating: " + response.Result[i].StarRating + "<br>" +"<div>" + createRadioButtons('hotels', i) + "</div>"+ "<hr>");
+              $("#hotel-data").append("Rating: " + response.Result[i].StarRating + "<br>" +"<div>" + createRadioButtons('hotels', i) + "</div>");
       };
   });
 };
