@@ -25,11 +25,11 @@ var dropOffTime = '';
     // hotels
     hotelSearch = $("#hotel-search").val().trim();
     // vehicle
-    carSearch = $("#car-search").val().trim();
-    startDate= $("#start-date").val().trim();
-    endDate = $("#end-date").val().trim();
-    pickUpTime = $("#pickup-time").val().trim();
-    dropOffTime = $("#dropoff-time").val().trim();
+    // carSearch = $("#car-search").val().trim();
+    // startDate= $("#start-date").val().trim();
+    // endDate = $("#end-date").val().trim();
+    // pickUpTime = $("#pickup-time").val().trim();
+    // dropOffTime = $("#dropoff-time").val().trim();
 
     $("#origin").val('');
     $("#destination").val('');
@@ -42,7 +42,7 @@ var dropOffTime = '';
     // calling function after getting user input
     getAirline();
     getHotels();
-    getCars();
+    // getCars();
     });
 
 // Function to connect ajax and get response from amadeus
@@ -84,7 +84,7 @@ function getAirline() {
 };
 
 function getHotels() {
-    var hotelURL = "http://api.hotwire.com/v1/deal/hotel?dest=" + hotelSearch + "&apikey=ypwszhf8vexgvadxj7w4axkt&format=json" + "&limit=1";
+    var hotelURL = "http://api.hotwire.com/v1/deal/hotel?dest=" + hotelSearch + "&apikey=ypwszhf8vexgvadxj7w4axkt&format=json" + "&limit=3";
     $.ajax({
         url:hotelURL,
         method: "GET",
@@ -92,44 +92,44 @@ function getHotels() {
       })
       .done(function(response) {
           console.log(response);
-          $("#hotel-data").append(response.Result.HotelDeal.Headline + "<br>");
-          $("#hotel-data").append("Location neighborhood: " + response.Result.HotelDeal.Neighborhood + "<br>");
-          $("#hotel-data").append("Your savings percentage: " + response.Result.HotelDeal.SavingsPercentage + "%" + "<br>");
-          $("#hotel-data").append("Hotel star rating: " + response.Result.HotelDeal.StarRating + "<br>");
+          for (i=0; i<3; i++) {
+              $("#hotel-data").append("Hotel Name: " + response.Result[i].Headline + "<br>");
+              $("#hotel-data").append("Location: " + response.Result[i].Neighborhood + "<br>");
+              $("#hotel-data").append("Price: $" + response.Result[i].Price + "<br>");
+              $("#hotel-data").append("Rating: " + response.Result[i].StarRating + "<br>" + "<hr>");
+      };
   });
 };
-
-function getCars() {
-    var carURL = "http://api.hotwire.com/v1/search/car?apikey=ypwszhf8vexgvadxj7w4axkt&dest=" + carSearch + "&startdate=" + startDate  +"&enddate=" + endDate + "&pickuptime=" + pickUpTime + "&dropofftime=" + dropOffTime + "&format=json";
-    $.ajax({
-        url:carURL,
-        method: "GET",
-        dataType: "json",
-      })
-      .done(function(response) {
-          console.log(response)
-          console.log(response.MetaData.CarMetaData);
-
-          for (var j = 0 ; j < 3; j++) {
-              console.log(response.MetaData.CarMeta.CarTypes[j]);
-
-              $("#car-data").append("Car Type: " + response.MetaData.CarMetaData.CarTypes[j].CarTypeName);
-              $("#car-data").append("Features: " + response.MetaData.CarMetaData.CarTypes[j].PossibleFeatures);
-              $("#car-data").append("Model: " + response.MetaData.CarMetaData.CarTypes[j].PossibleModels);
-              $("#car-data").append("Seating: " + response.MetaData.CarMetaData.CarTypes[j].TypicalSeating);
-
-              $("#car-data").append(response.Result[j].DailyRate);
-              $("#car-data").append(response.Result[j].DropoffDay);
-              $("#car-data").append(response.Result[j].DropoffTime);
-              $("#car-data").append(response.Result[j].LocationDescription);
-              $("#car-data").append(response.Result[j].PickupAirport);
-              $("#car-data").append(response.Result[j].PickupDay);
-              $("#car-data").append(response.Result[j].PickupTime);
-              $("#car-data").append(response.Result[j].SubTotal);
-              $("#car-data").append(response.Result[j].TaxesAndFees);
-              $("#car-data").append(response.Result[j].TotalPrice);
-
-
-          }
-})
-};
+//
+// function getCars() {
+//     var carURL = "http://api.hotwire.com/v1/search/car?apikey=ypwszhf8vexgvadxj7w4axkt&dest=" + carSearch + "&startdate=" + startDate  +"&enddate=" + endDate + "&pickuptime=" + pickUpTime + "&dropofftime=" + dropOffTime + "&format=json";
+//     $.ajax({
+//         url:carURL,
+//         method: "GET",
+//         dataType: "json",
+//       })
+//       .done(function(response) {
+//           console.log(response)
+//           console.log(response.MetaData.CarMetaData);
+//
+//           for (var j = 0 ; j < 3; j++) {
+//               console.log(response.MetaData.CarMeta.CarTypes[j]);
+//
+//               $("#car-data").append("Car Type: " + response.MetaData.CarMetaData.CarTypes[j].CarTypeName);
+//               $("#car-data").append("Features: " + response.MetaData.CarMetaData.CarTypes[j].PossibleFeatures);
+//               $("#car-data").append("Model: " + response.MetaData.CarMetaData.CarTypes[j].PossibleModels);
+//               $("#car-data").append("Seating: " + response.MetaData.CarMetaData.CarTypes[j].TypicalSeating);
+//
+//               $("#car-data").append(response.Result[j].DailyRate);
+//               $("#car-data").append(response.Result[j].DropoffDay);
+//               $("#car-data").append(response.Result[j].DropoffTime);
+//               $("#car-data").append(response.Result[j].LocationDescription);
+//               $("#car-data").append(response.Result[j].PickupAirport);
+//               $("#car-data").append(response.Result[j].PickupDay);
+//               $("#car-data").append(response.Result[j].PickupTime);
+//               $("#car-data").append(response.Result[j].SubTotal);
+//               $("#car-data").append(response.Result[j].TaxesAndFees);
+//               $("#car-data").append(response.Result[j].TotalPrice);
+//           };
+//     });
+// };
