@@ -1,3 +1,4 @@
+
 var apiKey = "&apikey=cG8ZbSEqyCqrad10YByFeF68h07TuCiw";
 var userOrigin = "";
 var userDestination = "";
@@ -116,11 +117,12 @@ function getHotels() {
     }).done(function(response) {
         hotelData = response.results;
         console.log(response);
-        console.log(hotelURL);
-
 
         for (var j = 0; j < 3 ; j++) {
+            $("#hotel-data").append("Hotel name: " + response.results[j].property_name + "<br>");
             $("#hotel-data").append("Address: " + response.results[j].address.line1 + "<br>");
+            $("#hotel-data").append("Cost per day: " + "$ " + response.results[j].min_daily_rate.amount + "<br>");
+            $("#hotel-data").append("Total cost for stay: " + "$ " + response.results[j].total_price.amount + "<br>");
             $("#hotel-data").append(" " + response.results[j].address.city);
             $("#hotel-data").append(", " + response.results[j].address.region );
             $("#hotel-data").append(" " + response.results[j].address.postal_code);
