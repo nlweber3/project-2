@@ -1,8 +1,66 @@
 
-<h1>Search Flights/Hotels</h1>
+
+
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         Search Flights!
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <form action="">
+    Origin: <br>
+        <input type="text" id="origin" name="origin"></br>
+    Destination: <br>
+        <input type="text" id="destination" name="destination"></br>
+    Departure Date: <br>
+        <input type="text" id="departure" name="departuredate"></br>
+    Return Date: <br>
+        <input type="text" id="return" name="returndate"></br>
+    Adults: <br>
+        <input type="text" id="adults" name="adults"></br>
+    Children: <br>
+        <input type="text" id="children" name="children"></br><br>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Search Hotels!
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <h1>Search hotels and car rentals</h1>
+    <input type="text" id="hotel-search"> Hotel location
+    <button type="button" id="submitbutton">Search!</button>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <h1>Search Flights/Hotels</h1>
 
 <form action="">
-    <h5>Search hotels and car rentals</h5>
     Origin: <br>
         <input type="text" id="origin" name="origin"></br>
     Destination: <br>
@@ -16,15 +74,17 @@
     Children: <br>
         <input type="text" id="children" name="children"></br><br>
 
-    <h5>Search hotels and car rentals</h5>
+    <h1>Search hotels and car rentals</h1>
     <input type="text" id="hotel-search"> Hotel location
     <button type="button" id="submitbutton">Search!</button>
+
+
 <div>
-    <h5 id="test">Your Itineraries: <h5>
+    <h1 id="test">Your Itineraries: <h5>
     <div id="itinerary_container"></div>
     <div id="itinerary_returning"></div>
     <div id="hotel-data"></div>
-</div>
+</div> --}}
 
 <!-- <div id="rentals">
         <input type="text" id="car-search">Car Location
