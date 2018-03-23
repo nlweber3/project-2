@@ -30,13 +30,17 @@ body {
     padding: 10px;
     margin-bottom: 30px;
    
+
+nav  {
+    text-align: center;
+    margin-left: 500px;
+    margin-right: 500px;
+    background-color: whitesmoke;
 }
-    
- }
  #bottom-form {
      margin-bottom: 30px;
  }
- 
+
  h2 {
     text-align: center;
  }
@@ -50,3 +54,17 @@ body {
      padding: 30px;
 
  }
+ #itinerary_container {
+  float: left;
+   border-style: solid;
+ }
+
+ #itinerary_returning {
+
+   border-style: solid;
+ }
+
+#hotel-data {
+   border-style: solid;
+   padding-top: 2%;
+}
