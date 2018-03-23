@@ -2,6 +2,7 @@ body {
     background: url(../assets/images/santorini.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    color:black;
     
  }
 .display-4{
@@ -24,6 +25,10 @@ body {
 
  .card{
      background-color: #e9eef1bd;
+ }
+
+ .btn-link{
+    color:#5f6169;
  }
  h1 {
   text-align: center;
