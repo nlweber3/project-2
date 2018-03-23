@@ -48,47 +48,47 @@ module.exports = function(sequelize,DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
           },
-          inbound_flightNumber {
+          inbound_flightNumber: {
             type: DataTypes.STRING,
             allowNull: false
           },
-          inbound_totalPrice {
+          inbound_totalPrice: {
             type: DataTypes.INTEGER,
             allowNull: false
           },
-          inbound_priceAdult {
+          inbound_priceAdult: {
             type: DataTypes.INTEGER,
             allowNull: false
           },
-          inbound_priceChild {
+          inbound_priceChild: {
             type: DataTypes.INTEGER,
             allowNull: false
-          {,
-          inbound_date {
+          },
+          inbound_date: {
             type: DataTypes.DATE,
             allowNull: false
           },
-          inbound_origin {
+          inbound_origin: {
             type: DataTypes.STRING,
             allowNull: false
           },
-          inbound_destination {
+          inbound_destination: {
             type: DataTypes.STRING,
             allowNull: false
           },
-          inbound_terminal {
+          inbound_terminal: {
             type: DataTypes.STRING,
             allowNull: false
           },
-          inbound_seats {
+          inbound_seats: {
             type: DataTypes.STRING,
             allowNull: false
           },
-          inbound_class {
+          inbound_class: {
             type: DataTypes.STRING,
             allowNull: false
           },
-        hotel_name {
+        hotel_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -105,4 +105,5 @@ module.exports = function(sequelize,DataTypes) {
             allowNull: false
         }
     });
+    return Itinerary;
 };
