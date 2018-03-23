@@ -25,7 +25,7 @@ module.exports = function (app, passport) {
 
             }
             console.log(row[0].password.length)
-            res.render('index.handlebars', { rows: row });
+            res.render('itinerary.handlebars', { rows: row });
         });
     });
 
