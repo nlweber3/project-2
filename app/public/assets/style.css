@@ -1,22 +1,42 @@
 body {
-    background: linear-gradient(to left, #0099ff 0%, #00ffff 100%);
+    background: url(../assets/images/santorini.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color:black;
+    
+ }
+.display-4{
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0px;
+    margin-top: 50px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 100px;
+    color: whitesmoke;
+}
 
-
+ .jumbotron{
+    
+     background-color: #e9ecefa6;
+    
 
  }
- .login-h1 {
 
+ .card{
+     background-color: #e9eef1bd;
+ }
+
+ .btn-link{
+    color:#5f6169;
     text-align: center;
-    background: whitesmoke;
-    padding:10px;
-    margin-bottom: 30px;
-    border: solid black 2px;
-
  }
- /* a {
-     text-align: center;
-     background: whitesmoke;
-}	 */
+ h1 {
+  text-align: center;
+    padding: 10px;
+    margin-bottom: 30px;
+   
+
 nav  {
     text-align: center;
     margin-left: 500px;
@@ -34,6 +54,12 @@ nav  {
      color: #DC143C;
  }
 
+
+ h5{
+     text-align: center;
+     padding: 30px;
+
+ }
  #itinerary_container {
   float: left;
    border-style: solid;

@@ -3,7 +3,6 @@
 // Dependencies
 var connection = require("../config/connection.js");
 // var router = Router();
-var Itenerary = require('../models/itinerary');
 
 // Routes
 module.exports = function(app) {
