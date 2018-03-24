@@ -21,15 +21,32 @@ var dropOffTime = '';
     userAdults = $("#adults").val().trim();
     userChildren = $("#children").val().trim();
 
-    var newChirp = {
+    var newItinerary = {
       searchOrigin: $(".origin").val().trim(),
       searchDestination: $(".destination").val().trim(),
       searchDeparture: $(".departure").val().trim(),
       searchReturn: $(".return").val().trim(),
       searchAdults: $(".adults").val().trim(),
-      searchChildren: $(".children").val().trim(),
+      searchChildren: $(".children").val().trim()
     };
+    console.log(newItinerary);
 
+    $.post("/api/itineraries", newItinerary)
+  // On success, run the following code
+  .then(function() {
+
+    var row = $("<div>");
+    row.addClass("itinerary");
+
+    row.append("<p>" + newItinerary.searchOrigin + " chirped: </p>");
+    row.append("<p>" + newItinerary.searchDestination + "</p>");
+    row.append("<p>" + newItinerary.searchDeparture + " chirped: </p>");
+    row.append("<p>" + newItinerary.searchReturn + "</p>");
+    row.append("<p>" + newItinerary.searchAdults + " chirped: </p>");
+    row.append("<p>" + newItinerary.searchChildren + "</p>");
+    $(".card-body").prepend(row);
+
+  });
 
     // hotels
     // hotelSearch = $("#hotel-search").val().trim();
@@ -53,6 +70,29 @@ var dropOffTime = '';
     getHotels();
     // getCars();
     });
+
+    $.get("/api/all", function(data) {
+
+  if (data.length !== 0) {
+
+    for (var i = 0; i < data.length; i++) {
+
+      var row = $("<div>");
+      row.addClass("listItinerary");
+
+      row.append("<p>" + data[i].searchOrigin + " chirped.. </p>");
+      row.append("<p>" + data[i].searchDestination + "</p>");
+      row.append("<p>" + data[i].searchDeparture + " chirped.. </p>");
+      row.append("<p>" + data[i].searchReturn + "</p>");
+      row.append("<p>" + data[i].searchAdults + " chirped.. </p>");
+      row.append("<p>" + data[i].searchChildren + "</p>");
+      $(".card-body").prepend(row);
+
+    }
+
+  }
+
+});
 
 var airlineData;
 var hotelData;
