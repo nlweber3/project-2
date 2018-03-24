@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 var app = express();
 var exphbs = require("express-handlebars");
 var html_routes = require('./app/routes/html-routes')(app);
-var api_routes = require('./app/routes/api-routes')(app);
+var api_routes = require('./app/routes/api-routes');
 var path = require('path');
 var dbconfig = require('./app/config/database');
 var mysql = require('mysql');
@@ -18,29 +18,26 @@ var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var passport = require('passport');
 var flash = require('connect-flash');
-
 var PORT = process.env.PORT || 3000;
 
 require('dotenv').config();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(cookieParser());
+
 require('./app/config/passport.js')(passport);
+app.use('/api', api_routes);
 
 app.use(express.static('app/public'));
 //  parsing into json
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+
+
 
 // log every request to the console
 app.use(morgan('dev'));
-
-// read cookies (needed for auth)
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/views'));
 
@@ -66,8 +63,6 @@ app.use(flash());
 require('./app/routes/passport-routes.js')(app, passport);
 require('./app/config/passport.js')(passport);
 
-// html_routes(app);
-// app.use('/api', api_routes);
 
 // setting handlebars
 app.engine('handlebars', exphbs({
@@ -79,3 +74,5 @@ app.set('view engine', 'handlebars');
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
+
+

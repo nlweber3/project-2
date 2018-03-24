@@ -11,7 +11,7 @@
 
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-        <form action="">
+        <form action="/api/posts"  id="data-form" method="post">
     Origin: <br>
         <input type="text" id="origin" name="origin"></br>
     Destination: <br>
@@ -29,6 +29,7 @@
       </div>
     </div>
   </div>
+
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
@@ -42,37 +43,14 @@
       </div>
     </div>
   </div>
+  
+    <button type="button"  id="confirmbutton">Search!</button>
    </form>
 
+<div id="megadiv">
+   <div id="itinerary_container"></div>
 
-   <br><br>
-<div class="row">
-  <div class="col-sm">
-<div class="card bg-light mb-3" style="max-width: 30rem;">
-  <div class="card-header">Departure</div>
-  <div class="card-body">
-    <div id="itinerary_container"></div>
-  </div>
-</div>
-</div>
-
-   <div class="col-sm">
-<div class="card bg-light mb-3" style="max-width: 30rem;">
-  <div class="card-header">Return</div>
-  <div class="card-body">
    <div id="itinerary_returning"></div>
-   </div>
-   </div>
-   </div>
 
-
-<div class="col-sm">
-<div class="card bg-light mb-3" style="max-width: 30rem;">
-  <div class="card-header">Hotels</div>
-  <div class="card-body">
    <div id="hotel-data"></div>
-</div>
-</div>
-</div>
-
 </div>
