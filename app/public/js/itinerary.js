@@ -11,7 +11,8 @@ var startDate = '';
 var endDate = '';
 var pickUpTime = '';
 var dropOffTime = '';
-
+var airlineData;
+var hotelData;
 
 
     $("#submitbutton").on("click",function(event) {
@@ -22,14 +23,6 @@ var dropOffTime = '';
     userReturn = $("#return").val().trim();
     userAdults = $("#adults").val().trim();
     userChildren = $("#children").val().trim();
-    // hotels
-    // hotelSearch = $("#hotel-search").val().trim();
-    // vehicle
-    // carSearch = $("#car-search").val().trim();
-    // startDate= $("#start-date").val().trim();
-    // endDate = $("#end-date").val().trim();
-    // pickUpTime = $("#pickup-time").val().trim();
-    // dropOffTime = $("#dropoff-time").val().trim();
 
     $("#origin").val('');
     $("#destination").val('');
@@ -37,16 +30,13 @@ var dropOffTime = '';
     $("#return").val('');
     $("#adults").val('');
     $("#children").val('');
-    // hotel
     $("hotel-search").val('');
     // calling function after getting user input
     getAirline();
     getHotels();
-    // getCars();
     });
 
-var airlineData;
-var hotelData;
+
 // Function to connect ajax and get response from amadeus
 function getAirline() {
     var amadeusURL = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?origin="+ userOrigin + "&destination=" + userDestination + "&departure_date=" +userDeparture+ "&return_date=" + userReturn + "&adults=" + userAdults + "&children=" + userChildren + "&number_of_results=5" + apiKey;
@@ -125,8 +115,6 @@ function getHotels() {
             $("#hotel-data").append("City: " + response.results[j].address.postal_code);
             $("#hotel-data").append("City: " + response.results[j].address.country);
             $("#hotel-data").append("City: " + response.results[j].contacts[0].detail + "<br>" +"<div>" + createRadioButtons('hotels', j) + "</div>");
-            
-
         }
 });
 };
@@ -156,10 +144,11 @@ function createRadioButtons(typeName, idx){
         //     dataObjTwo[dataPointTwo] = hotelData[idxTwo].address[0][dataPointTwo];
         // });
         console.log(dataObj);
+        var newObj = JSON.parse(dataObj);
         // console.log(dataObjTwo);
-        $.post("/api/posts", dataObj)
-        .then(function() {
-            console.log("test");
+        $.post("/api/posts", newObj)
+        .then(function(data) {
+            console.log(data);
         });
 
     });
