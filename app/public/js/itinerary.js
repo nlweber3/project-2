@@ -59,7 +59,7 @@ function getAirline() {
         console.log(response.results);
         console.log(amadeusURL);
         // Outbound
-        for (i=0; i<3; i++) {
+        for (i=0; i<1; i++) {
             $('#itinerary_container').append("Airline: " + response.results[i].itineraries[0].outbound.flights[0].marketing_airline + "</div><br>");
             $('#itinerary_container').append( "Flight Number: " + response.results[i].itineraries[0].outbound.flights[0].flight_number + "<br>");
             $('#itinerary_container').append("Your Total Price: $" + response.results[i].fare.total_price + "<br>");
@@ -118,16 +118,17 @@ function getHotels() {
         console.log(response);
         console.log(hotelURL);
 
+        for (var j = 0; j < 1 ; j++) { 
+            $("#hotel-data").append("City: " + response.results[j].address.line1);
+            $("#hotel-data").append("City: " + response.results[j].address.city);
+            $("#hotel-data").append("City: " + response.results[j].address.region);
+            $("#hotel-data").append("City: " + response.results[j].address.postal_code);
+            $("#hotel-data").append("City: " + response.results[j].address.country);
+            $("#hotel-data").append("City: " + response.results[j].contacts[0].detail + "<br>" +"<div>" + createRadioButtons('hotels', j) + "</div>");
+            
 
-        for (var j = 0; j < 3 ; j++) {
-            $("#hotel-data").append("Address: " + response.results[j].address.line1 + "<br>");
-            $("#hotel-data").append(" " + response.results[j].address.city);
-            $("#hotel-data").append(", " + response.results[j].address.region );
-            $("#hotel-data").append(" " + response.results[j].address.postal_code);
-            $("#hotel-data").append(" " + response.results[j].address.country + "<br>");
-            $("#hotel-data").append("Phone Number: " + response.results[j].contacts[0].detail + "<br>" + "<div>" + createRadioButtons('hotels', j) +"</div>");
-        };
-  });
+        }
+});
 };
 
 function createRadioButtons(typeName, idx){
@@ -139,17 +140,29 @@ function createRadioButtons(typeName, idx){
 }
 
 
+
     $('#confirmbutton').on("click", function() {
         console.log('click confirm button');
         var dataPoints = ['outbound', 'inbound'];
+        var dataPointsTwo = ['hotels'];
         var dataObj = {};
+        var dataObjTwo = {};
         dataPoints.forEach(dataPoint => {
             var idx = $('[name='+dataPoint+']:checked').val();
             dataObj[dataPoint] = airlineData[idx].itineraries[0][dataPoint];
         });
+        // dataPointsTwo.forEach(dataPointTwo => {
+        //     var idxTwo =  $('[name='+dataPointTwo+']:checked').val();
+        //     dataObjTwo[dataPointTwo] = hotelData[idxTwo].address[0][dataPointTwo];
+        // });
         console.log(dataObj);
+        // console.log(dataObjTwo);
+        $.post("/api/posts", dataObj)
+        .then(function() {
+            console.log("test");
+        });
 
-    })
+    });
 //
 // function getCars() {
 //     var carURL = "http://api.hotwire.com/v1/search/car?apikey=ypwszhf8vexgvadxj7w4axkt&dest=" + carSearch + "&startdate=" + startDate  +"&enddate=" + endDate + "&pickuptime=" + pickUpTime + "&dropofftime=" + dropOffTime + "&format=json";
