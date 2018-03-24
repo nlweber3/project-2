@@ -24,9 +24,19 @@ body {
  }
 
  .card{
-     background-color: #e9eef1bd;
+     background-color: #e9ecefa6;
  }
 
+ .card-header{
+     background-color: #e9eef1bd;
+     color:#5f6169;
+ 
+ }
+
+.bg-light{
+    background-color: #b8d5e47a!important;
+}
+ 
  .btn-link{
     color:#5f6169;
     text-align: center;
