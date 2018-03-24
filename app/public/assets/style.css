@@ -63,8 +63,13 @@ nav  {
  .red-hyper {
      color: #DC143C;
  }
-
-
+.btn-danger {
+   right:0;
+   top:0;
+   position: fixed;
+   margin-top: 5px;
+   margin-right: 5px;
+}
  h5{
      text-align: center;
      padding: 30px;
