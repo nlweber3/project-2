@@ -54,27 +54,18 @@ var searchChildren = '';
 
   });
 
-    // hotels
-    // hotelSearch = $("#hotel-search").val().trim();
-    // vehicle
-    // carSearch = $("#car-search").val().trim();
-    // startDate= $("#start-date").val().trim();
-    // endDate = $("#end-date").val().trim();
-    // pickUpTime = $("#pickup-time").val().trim();
-    // dropOffTime = $("#dropoff-time").val().trim();
-
     $("#origin").val('');
     $("#destination").val('');
     $("#departure").val('');
     $("#return").val('');
     $("#adults").val('');
     $("#children").val('');
-    // hotel
     $("hotel-search").val('');
+
     // calling function after getting user input
     getAirline();
     getHotels();
-    // getCars();
+
     });
 
     $.get("/api/all", function(data) {
@@ -142,26 +133,6 @@ function getAirline() {
     });
 };
 
-// function getHotels() {
-//     var hotelURL = "http://api.hotwire.com/v1/deal/hotel?dest=" + hotelSearch + "&apikey=ypwszhf8vexgvadxj7w4axkt&format=json" + "&limit=3";
-//     $.ajax({
-//         url:hotelURL,
-//         method: "GET",
-//         dataType: "json",
-//       })
-//       .done(function(response) {
-//           console.log(response);
-//           hotelData = response;
-//           for (i=0; i<3; i++) {
-//               $("#hotel-data").append("Hotel Name: " + response.Result[i].Headline + "<br>");
-//               $("#hotel-data").append("Location: " + response.Result[i].Neighborhood + "<br>");
-//               $("#hotel-data").append("Price: $" + response.Result[i].Price + "<br>");
-//               $("#hotel-data").append("Rating: " + response.Result[i].StarRating + "<br>" +"<div>" + createRadioButtons('hotels', i) + "</div>");
-//       };
-//   });
-// };
-
-
 function getHotels() {
     var hotelURL = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?" + "apikey=cG8ZbSEqyCqrad10YByFeF68h07TuCiw" + "&location=" + userDestination + "&check_in=" + userDeparture + "&check_out=" + userReturn + "&number_of_results=3";
     $.ajax({
@@ -193,61 +164,3 @@ function createRadioButtons(typeName, idx){
     radioButton.setAttribute('value', idx);
     return radioButton.outerHTML;
 }
-
-
-
-    $('#confirmbutton').on("click", function() {
-        console.log('click confirm button');
-        var dataPoints = ['outbound', 'inbound'];
-        var dataPointsTwo = ['hotels'];
-        var dataObj = {};
-        var dataObjTwo = {};
-        dataPoints.forEach(dataPoint => {
-            var idx = $('[name='+dataPoint+']:checked').val();
-            dataObj[dataPoint] = airlineData[idx].itineraries[0][dataPoint];
-        });
-        // dataPointsTwo.forEach(dataPointTwo => {
-        //     var idxTwo =  $('[name='+dataPointTwo+']:checked').val();
-        //     dataObjTwo[dataPointTwo] = hotelData[idxTwo].address[0][dataPointTwo];
-        // });
-        console.log(dataObj);
-        // console.log(dataObjTwo);
-        $.post("/api/posts", dataObj)
-        .then(function() {
-            console.log("test");
-        });
-
-    });
-//
-// function getCars() {
-//     var carURL = "http://api.hotwire.com/v1/search/car?apikey=ypwszhf8vexgvadxj7w4axkt&dest=" + carSearch + "&startdate=" + startDate  +"&enddate=" + endDate + "&pickuptime=" + pickUpTime + "&dropofftime=" + dropOffTime + "&format=json";
-//     $.ajax({
-//         url:carURL,
-//         method: "GET",
-//         dataType: "json",
-//       })
-//       .done(function(response) {
-//           console.log(response)
-//           console.log(response.MetaData.CarMetaData);
-//
-//           for (var j = 0 ; j < 3; j++) {
-//               console.log(response.MetaData.CarMeta.CarTypes[j]);
-//
-//               $("#car-data").append("Car Type: " + response.MetaData.CarMetaData.CarTypes[j].CarTypeName);
-//               $("#car-data").append("Features: " + response.MetaData.CarMetaData.CarTypes[j].PossibleFeatures);
-//               $("#car-data").append("Model: " + response.MetaData.CarMetaData.CarTypes[j].PossibleModels);
-//               $("#car-data").append("Seating: " + response.MetaData.CarMetaData.CarTypes[j].TypicalSeating);
-//
-//               $("#car-data").append(response.Result[j].DailyRate);
-//               $("#car-data").append(response.Result[j].DropoffDay);
-//               $("#car-data").append(response.Result[j].DropoffTime);
-//               $("#car-data").append(response.Result[j].LocationDescription);
-//               $("#car-data").append(response.Result[j].PickupAirport);
-//               $("#car-data").append(response.Result[j].PickupDay);
-//               $("#car-data").append(response.Result[j].PickupTime);
-//               $("#car-data").append(response.Result[j].SubTotal);
-//               $("#car-data").append(response.Result[j].TaxesAndFees);
-//               $("#car-data").append(response.Result[j].TotalPrice);
-//           };
-//     });
-// };
