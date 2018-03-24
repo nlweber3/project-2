@@ -1,64 +1,50 @@
-// Api Routes - this file offers routes for displaying and saving data to the database
+
+// *********************************************************************************
+// api-routes.js - this file offers a set of routes for displaying and saving data to the db
+// *********************************************************************************
 
 // Dependencies
-var db = require("../models");
-// var router = Router();
+// =============================================================
+var Itinerary = require("../models/table.js");
+
 
 // Routes
+// =============================================================
 module.exports = function(app) {
-    // app.get("/api/posts/", function(req, res) {
-    //   db.Post.findAll({})
-    //     .then(function(dbPost) {
-    //       res.json(dbPost);
-    //   });
-    // });
 
-    app.get("/api/posts", function(req, res) {
-      console.log(req.body);
-      // db.Post.create({
-      //   outbound_airline: req.body.outAirline,
-      //   outbound_flightNumber: req.body.outFlightNumber,
-      //   outbound_totalPrice: req.body.outTotalPrice,
-      //   outbound_priceAdult: req.body.outPriceAdult,
-      //   outbound_priceChild: req.body.outPriceChild,
-      //   outbound_date: req.body.outDate,
-      //   outbound_origin: req.body.outOrigin,
-      //   outbound_destination: req.body.outDestination,
-      //   outbound_terminal: req.body.outTerminal,
-      //   outbound_seats: req.body.outSeats,
-      //   outbound_class: req.body.outClass,
+  // Get all chirps
+  app.get("/api/all", function(req, res) {
 
-      //   inbound_airline: req.body.inAirline,
-      //   inbound_flightNumber: req.body.inFlightNumber,
-      //   inbound_totalPrice: req.body.inTotalPrice,
-      //   inbound_priceAdult: req.body.inPriceAdult,
-      //   inbound_priceChild: req.body.inPriceChild,
-      //   inbound_date: req.body.inDate,
-      //   inbound_origin: req.body.inOrigin,
-      //   inbound_destination: req.body.inDestination,
-      //   inbound_terminal: req.body.inTerminal,
-      //   inbound_seats: req.body.inSeats,
-      //   inbound_class: req.body.inClass,
-
-      //   hotel_name: req.body.hotelName,
-      //   hotel_address: req.body.hotelAddress,
-      //   hotel_cost: req.body.hotelCost,
-      //   hotel_phone: req.body.hotelPhone
-
-      // }).then(function(dbPost) {
-      //   res.json(dbPost);
-      // });
+    // Finding all Chirps, and then returning them to the user as JSON.
+    // Sequelize queries are aynchronous, which helps with percieved speed.
+    // If we want something to be guaranteed to happen after the query, we'll use
+    // the .then function
+    Itinerary.findAll({}).then(function(results) {
+      // results are available to us inside the .then
+      res.json(results);
     });
-    
-    app.post("/api/posts", function(req, res) {
-      console.log(req.body);
+
+  });
+
+  // Add a chirp
+  app.post("/api/new", function(req, res) {
+
+    console.log("Itinerary Data:");
+    console.log(req.body);
+
+    Chirp.create({
+      origin: req.body.origin,
+      destination: req.body.destination,
+      departuredate: req.body.departuredate,
+      returndate: req.body.returndate,
+      adults: req.body.adults,
+      children: req.body.children
+
+    }).then(function(results) {
+      // `results` here would be the newly created chirp
+      res.end();
     });
+
+  });
 
 };
-
-// router.post('/create',function(request, response) {
-//     Itenerary.create(response, req.body);
-
-// });
-
-// module.exports = router;
