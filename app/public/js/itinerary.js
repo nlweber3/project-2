@@ -114,7 +114,7 @@ function getAirline() {
         console.log(response.results);
         console.log(amadeusURL);
         // Outbound
-        for (i=0; i<1; i++) {
+        for (i=0; i<3; i++) {
             $('#itinerary_container').append("Airline: " + response.results[i].itineraries[0].outbound.flights[0].marketing_airline + "</div><br>");
             $('#itinerary_container').append( "Flight Number: " + response.results[i].itineraries[0].outbound.flights[0].flight_number + "<br>");
             $('#itinerary_container').append("Your Total Price: $" + response.results[i].fare.total_price + "<br>");
@@ -124,7 +124,7 @@ function getAirline() {
             $('#itinerary_container').append("Origin: " + response.results[i].itineraries[0].outbound.flights[0].origin.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].origin.terminal + "<br>");
             $('#itinerary_container').append("Destination: " + response.results[i].itineraries[0].outbound.flights[0].destination.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].destination.terminal + "<br>");
             $('#itinerary_container').append("Seats remaining: " + response.results[i].itineraries[0].outbound.flights[0].booking_info.seats_remaining + "<br>");
-            $('#itinerary_container').append( "Booking Class: " + response.results[0].itineraries[0].outbound.flights[0].booking_info.travel_class + "<br>" +"<div>" + createRadioButtons('outbound', i) +"</div>");
+            $('#itinerary_container').append( "Booking Class: " + response.results[0].itineraries[0].outbound.flights[0].booking_info.travel_class + "<br>" + "<hr>");
 
 
             // Inbound
@@ -137,7 +137,7 @@ function getAirline() {
             $("#itinerary_returning").append("Origin: " + response.results[i].itineraries[0].inbound.flights[0].origin.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].origin.terminal + "<br>");
             $("#itinerary_returning").append("Destination: " + response.results[i].itineraries[0].inbound.flights[0].destination.airport + " terminal: " + response.results[i].itineraries[0].outbound.flights[0].destination.terminal + "<br>");
             $("#itinerary_returning").append("Seats remaining: " + response.results[i].itineraries[0].inbound.flights[0].booking_info.seats_remaining + "<br>");
-            $("#itinerary_returning").append( "Booking Class: " + response.results[0].itineraries[0].inbound.flights[0].booking_info.travel_class + "<br>" +"<div>" + createRadioButtons('inbound', i) + "</div>");
+            $("#itinerary_returning").append( "Booking Class: " + response.results[0].itineraries[0].inbound.flights[0].booking_info.travel_class + "<br>" + "<hr>");
         }
     });
 };
@@ -173,13 +173,15 @@ function getHotels() {
         console.log(response);
         console.log(hotelURL);
 
-        for (var j = 0; j < 1 ; j++) {
-            $("#hotel-data").append("City: " + response.results[j].address.line1);
-            $("#hotel-data").append("City: " + response.results[j].address.city);
-            $("#hotel-data").append("City: " + response.results[j].address.region);
-            $("#hotel-data").append("City: " + response.results[j].address.postal_code);
-            $("#hotel-data").append("City: " + response.results[j].address.country);
-            $("#hotel-data").append("City: " + response.results[j].contacts[0].detail + "<br>" +"<div>" + createRadioButtons('hotels', j) + "</div>");
+        for (var j = 0; j < 3 ; j++) {
+            $("#hotel-data").append("" + response.results[j].property_name + "<br>" + "<br>");
+            $("#hotel-data").append("Address: " + response.results[j].address.line1 + "<br>");
+            $("#hotel-data").append("" + response.results[j].address.city);
+            $("#hotel-data").append("," + response.results[j].address.region);
+            $("#hotel-data").append(" " + response.results[j].address.postal_code);
+            $("#hotel-data").append(" " + response.results[j].address.country + "<br>");
+            $("#hotel-data").append("Phone Number: " + response.results[j].contacts[0].detail + "<br>");
+            $("#hotel-data").append("Price Per Night: $" + response.results[j].total_price.amount + "<br>" + "<hr>");
 
 
         }
