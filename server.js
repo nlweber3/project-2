@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 var app = express();
 var exphbs = require("express-handlebars");
 var html_routes = require('./app/routes/html-routes')(app);
-var api_routes = require('./app/routes/api-routes')(app);
+// var api_routes = require('./app/routes/api-routes')(app);
 var path = require('path');
 var dbconfig = require('./app/config/database');
 var mysql = require('mysql');
@@ -79,6 +79,8 @@ app.set('view engine', 'handlebars');
 // app.listen(PORT, function() {
 //   console.log("App listening on PORT " + PORT);
 // });
+
+require('./app/routes/api-routes')(app);
 
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {

@@ -27,7 +27,7 @@ module.exports = function(app) {
   });
 
   // Add a chirp
-  app.post("/api/new", function(req, res) {
+  app.post("/api/itinerary", function(req, res) {
 
     console.log("Itinerary Data:");
     console.log(req.body);
@@ -39,7 +39,6 @@ module.exports = function(app) {
       returndate: req.body.returndate,
       adults: req.body.adults,
       children: req.body.children
-
     }).then(function(results) {
       // `results` here would be the newly created chirp
       res.end();
