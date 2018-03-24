@@ -11,6 +11,12 @@ var startDate = '';
 var endDate = '';
 var pickUpTime = '';
 var dropOffTime = '';
+var searchOrigin = '';
+var searchDeparture = '';
+var searchDestination = '';
+var searchReturn = '';
+var searchAdults = '';
+var searchChildren = '';
 
     $("#submitbutton").on("click",function(event) {
     event.preventDefault();
@@ -31,20 +37,20 @@ var dropOffTime = '';
     };
     console.log(newItinerary);
 
-    $.post("/api/itineraries", newItinerary)
+    $.post("/api/itinerary", newItinerary)
   // On success, run the following code
   .then(function() {
 
     var row = $("<div>");
     row.addClass("itinerary");
 
-    row.append("<p>" + newItinerary.searchOrigin + " chirped: </p>");
+    row.append("<p>" + newItinerary.searchOrigin + "</p>");
     row.append("<p>" + newItinerary.searchDestination + "</p>");
-    row.append("<p>" + newItinerary.searchDeparture + " chirped: </p>");
+    row.append("<p>" + newItinerary.searchDeparture + " </p>");
     row.append("<p>" + newItinerary.searchReturn + "</p>");
-    row.append("<p>" + newItinerary.searchAdults + " chirped: </p>");
-    row.append("<p>" + newItinerary.searchChildren + "</p>");
-    $(".card-body").prepend(row);
+    row.append("<p>" + newItinerary.searchAdults + "</p>");
+    row.append("<p>" + newItinerary.searchChildren + "</p>" + +"<br>" + "<hr>");
+    $("#booyahbitches").prepend(row);
 
   });
 
@@ -80,13 +86,13 @@ var dropOffTime = '';
       var row = $("<div>");
       row.addClass("listItinerary");
 
-      row.append("<p>" + data[i].searchOrigin + " chirped.. </p>");
+      row.append("<p>" + data[i].searchOrigin + "  </p>");
       row.append("<p>" + data[i].searchDestination + "</p>");
-      row.append("<p>" + data[i].searchDeparture + " chirped.. </p>");
+      row.append("<p>" + data[i].searchDeparture + "  </p>");
       row.append("<p>" + data[i].searchReturn + "</p>");
-      row.append("<p>" + data[i].searchAdults + " chirped.. </p>");
+      row.append("<p>" + data[i].searchAdults + "  </p>");
       row.append("<p>" + data[i].searchChildren + "</p>");
-      $(".card-body").prepend(row);
+      $("#booyahbitches").prepend(row);
 
     }
 
