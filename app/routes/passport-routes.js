@@ -21,7 +21,7 @@ module.exports = function (app, passport) {
 
                     }
                 }
-                console.log(row);
+                console.log(row + 'this');
 
             }
             console.log(row[0].password.length)

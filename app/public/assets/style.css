@@ -89,3 +89,10 @@ nav  {
    border-style: solid;
    padding-top: 2%;
 }
+#username {
+    left:0;
+    top:0;
+    position: fixed;
+    margin-left: 5px;
+    margin-top: 5px;
+}
