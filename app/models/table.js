@@ -4,7 +4,7 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js");
 
 module.exports = function(sequelize, DataTypes) {
-  var Itinerary = sequelize.define("itinerary", {
+  var Itinerary = sequelize.define("Itinerary", {
     origin: DataTypes.STRING,
     destination: DataTypes.STRING,
     departuredate: DataTypes.STRING,

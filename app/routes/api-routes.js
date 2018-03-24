@@ -5,7 +5,7 @@
 
 // Dependencies
 // =============================================================
-var Itinerary = require("../models/table.js");
+var db = require("../models");
 
 
 // Routes
@@ -19,7 +19,7 @@ module.exports = function(app) {
     // Sequelize queries are aynchronous, which helps with percieved speed.
     // If we want something to be guaranteed to happen after the query, we'll use
     // the .then function
-    Itinerary.findAll({}).then(function(results) {
+    db.Itinerary.findAll({}).then(function(results) {
       // results are available to us inside the .then
       res.json(results);
     });
@@ -32,7 +32,7 @@ module.exports = function(app) {
     console.log("Itinerary Data:");
     console.log(req.body);
 
-    Chirp.create({
+    db.Itinerary.create({
       origin: req.body.origin,
       destination: req.body.destination,
       departuredate: req.body.departuredate,
