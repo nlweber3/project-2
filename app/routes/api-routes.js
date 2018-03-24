@@ -1,11 +1,12 @@
+
 // Api Routes - this file offers routes for displaying and saving data to the database
 
 // Dependencies
 var db = require("../models");
-// var router = Router();
+var express = require('express');
+var router = express.Router();
 
 // Routes
-module.exports = function(app) {
     // app.get("/api/posts/", function(req, res) {
     //   db.Post.findAll({})
     //     .then(function(dbPost) {
@@ -13,8 +14,9 @@ module.exports = function(app) {
     //   });
     // });
 
-    app.get("/api/posts", function(req, res) {
-      console.log(req.body);
+    router.get("/api/posts", function(req, res) {
+      console.log("Data: " + req.body);
+      res.send(json);
       // db.Post.create({
       //   outbound_airline: req.body.outAirline,
       //   outbound_flightNumber: req.body.outFlightNumber,
@@ -50,15 +52,14 @@ module.exports = function(app) {
       // });
     });
     
-    app.post("/api/posts", function(req, res) {
-      console.log(req.body);
+    router.post("/api/posts", function(req, res) {
+      console.log(req);
     });
 
-};
 
 // router.post('/create',function(request, response) {
 //     Itenerary.create(response, req.body);
 
 // });
 
-// module.exports = router;
+module.exports = router;
