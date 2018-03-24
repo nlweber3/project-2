@@ -12,8 +12,6 @@ var endDate = '';
 var pickUpTime = '';
 var dropOffTime = '';
 
-
-
     $("#submitbutton").on("click",function(event) {
     event.preventDefault();
     userOrigin = $("#origin").val().trim();
@@ -22,6 +20,17 @@ var dropOffTime = '';
     userReturn = $("#return").val().trim();
     userAdults = $("#adults").val().trim();
     userChildren = $("#children").val().trim();
+
+    var newChirp = {
+      searchOrigin: $(".origin").val().trim(),
+      searchDestination: $(".destination").val().trim(),
+      searchDeparture: $(".departure").val().trim(),
+      searchReturn: $(".return").val().trim(),
+      searchAdults: $(".adults").val().trim(),
+      searchChildren: $(".children").val().trim(),
+    };
+
+
     // hotels
     // hotelSearch = $("#hotel-search").val().trim();
     // vehicle
@@ -118,14 +127,14 @@ function getHotels() {
         console.log(response);
         console.log(hotelURL);
 
-        for (var j = 0; j < 1 ; j++) { 
+        for (var j = 0; j < 1 ; j++) {
             $("#hotel-data").append("City: " + response.results[j].address.line1);
             $("#hotel-data").append("City: " + response.results[j].address.city);
             $("#hotel-data").append("City: " + response.results[j].address.region);
             $("#hotel-data").append("City: " + response.results[j].address.postal_code);
             $("#hotel-data").append("City: " + response.results[j].address.country);
             $("#hotel-data").append("City: " + response.results[j].contacts[0].detail + "<br>" +"<div>" + createRadioButtons('hotels', j) + "</div>");
-            
+
 
         }
 });

@@ -20,7 +20,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 
 var PORT = process.env.PORT || 3000;
-
+var db = require("./app/models");
 require('dotenv').config();
 
 require('./app/config/passport.js')(passport);
@@ -75,7 +75,13 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-// server listener
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+// // server listener
+// app.listen(PORT, function() {
+//   console.log("App listening on PORT " + PORT);
+// });
+
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
