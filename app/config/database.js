@@ -5,7 +5,7 @@ module.exports = {
         'host': 'localhost',
         'user': 'root', 
         'password': process.env.PASSWORD,
-        'database': 'db'
+        'database': 'db',
     },
 	'database': 'db',
     
